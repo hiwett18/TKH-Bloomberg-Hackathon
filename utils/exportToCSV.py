@@ -47,7 +47,6 @@ excludeProperties = [
     "@id",
     "@type",
     "station",
-    "rawMessage",
     "icon",
     "presentWeather",
     "cloudLayers"
