@@ -1,5 +1,6 @@
 import json
 import csv
+from tokenize import String
 
 '''
 structure of these weather files is:
@@ -42,6 +43,27 @@ structure of these weather files is:
 }
 '''
 
+excludeProperties = [
+    "@id",
+    "@type",
+    "station",
+    "rawMessage",
+    "icon",
+    "presentWeather",
+    "cloudLayers"
+]
+
+def formatRowData(headerArray, rowJSON):
+    formattedArray = []
+
+    for header in headerArray:
+        if (type(rowJSON[header]) == dict):
+            formattedArray.append(rowJSON[header]["value"])
+        elif (type(rowJSON[header] == str)):
+            formattedArray.append(rowJSON[header])
+
+    return formattedArray
+
 with open('./data/source.json') as json_file:
     jsondata = json.load(json_file)
 
@@ -59,11 +81,11 @@ for features in jsondata:
                 continue
 
             if count == 0:
-                header = data.get(properties).keys()
+                header = [value for value in list(data.get(properties).keys()) if value not in excludeProperties]
                 csv_writer.writerow(header)
                 count += 1
 
-            csv_writer.writerow(data.get(properties).values())
+            csv_writer.writerow(formatRowData(header, data.get(properties)))
 
 data_file.close()
 
