@@ -2,7 +2,8 @@
 Hello everyone!
 
 Plan: 
-1. Getting the Code
-2. Visualization 
-3. Modeling
+1. Getting the Data
+  - Choose [a public api](/DATASOURCES.md) that is supported by our conversion util scripts
+2. Modeling
+3. Visualization
 4. Future: Dashboard/Tableau 
