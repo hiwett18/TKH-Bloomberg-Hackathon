@@ -1,6 +1,5 @@
 import json
 import csv
-from tokenize import String
 
 '''
 structure of these weather files is:
@@ -92,8 +91,8 @@ data_file.close()
 How to run this file:
 
 1. Navigate to the root directory
-2. Download your desired weather file from https://www.weather.gov/documentation/services-web-api
+2. Download your desired weather file from https://www.weather.gov/documentation/services-web-api (e.g. https://api.weather.gov/stations/KJFK,KEWR,KNYC,KLGA,KTEB/observations)
 3. Rename the exported JSON file to 'source.json' and place it in the 'data' directory
-4. Run the command with 'python 3 utils/exportToCSV.py'
+4. Run the command with 'python 3 utils/weatherGovToCSV.py'
 5. If everything was successful, 'output.csv' should appear in the 'data' directory and have the contents you want
 '''
